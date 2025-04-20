@@ -8,18 +8,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Image } from 'react-native';
 import bell from '../assets/bell.png';
 import newspaper from '../assets/newspaper.png';
-import { Home } from './screens/Home';
+import { Home } from './screens/home/Home';
 import { Profile } from './screens/Profile';
 import { Settings } from './screens/Settings';
 import { Updates } from './screens/Updates';
 import { NotFound } from './screens/NotFound';
+
+import MutualFundCalculator from './screens/mutual-funds/MutualFunds';
 
 const HomeTabs = createBottomTabNavigator({
   screens: {
     Home: {
       screen: Home,
       options: {
-        title: 'Feed',
+        title: 'Calculator',
         tabBarIcon: ({ color, size }) => (
           <Image
             source={newspaper}
@@ -91,6 +93,13 @@ const RootStack = createNativeStackNavigator({
         path: '*',
       },
     },
+    MutualFunds: {
+      screen: MutualFundCalculator,
+      options: {
+        title: 'Mutual Funds',
+        headerShown: true,
+      },
+    },
   },
 });
 
@@ -100,6 +109,6 @@ type RootStackParamList = StaticParamList<typeof RootStack>;
 
 declare global {
   namespace ReactNavigation {
-    interface RootParamList extends RootStackParamList {}
+    interface RootParamList extends RootStackParamList { }
   }
 }
